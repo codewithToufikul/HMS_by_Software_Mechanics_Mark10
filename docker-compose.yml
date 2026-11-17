@@ -23,7 +23,7 @@ services:
       POSTGRES_USER: hospitaluser
       POSTGRES_PASSWORD: ${DBPASSWORD}
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgresdata:/var/lib/postgresql/data
     healthcheck:
