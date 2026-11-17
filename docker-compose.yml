@@ -1,0 +1,36 @@
+
+services:
+  web:
+    build: .
+    container_name: hospitalbackend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17
+    container_name: hospitalpostgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hospitaldb
+      POSTGRES_USER: hospitaluser
+      POSTGRES_PASSWORD: ${DBPASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hospitaluser -d hospitaldb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgresdata:
