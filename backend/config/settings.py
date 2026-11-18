@@ -8,15 +8,27 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
+    # Django default apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    # Third-party apps
     "rest_framework",
     "corsheaders",
+
+    # Local core & platform apps
+    "apps.core",
+    "apps.accounts",
+    "apps.hospitals",
+    "apps.access",
 ]
+
+AUTH_USER_MODEL = "accounts.User"
+
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
