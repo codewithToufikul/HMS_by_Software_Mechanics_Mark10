@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>🏥 HMS Admin</h2>
+
+    <a class="active" href="/">Dashboard</a>
+    <a href="#">User Management</a>
+    <a href="#">Doctors</a>
+    <a href="#">Patients</a>
+    <a href="#">Departments</a>
+    <a href="#">Appointments</a>
+    <a href="#">Reports</a>
+    <a href="#">Settings</a>
+    <a href="#">Logout</a>
+</div>
+
+<div class="main-content">
+
+    <header>
+        <div>
+            <h1>Super Admin Dashboard</h1>
+            <p>Welcome back, Administrator 👋</p>
+        </div>
+
+        <div class="profile">
+            <span>🔔</span>
+            <span>Admin</span>
+        </div>
+    </header>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Patients</h3>
+            <h2>{{ stats.patients }}</h2>
+            <p>Registered patients</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Doctors</h3>
+            <h2>{{ stats.doctors }}</h2>
+            <p>Available doctors</p>
+        </div>
+
+        <div class="card">
+            <h3>Appointments</h3>
+            <h2>{{ stats.appointments }}</h2>
+            <p>Today's appointments</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Revenue</h3>
+            <h2>৳{{ stats.revenue }}</h2>
+            <p>Hospital revenue</p>
+        </div>
+
+    </div>
+
+    <div class="content-box">
+        <h2>Recent Activity</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Activity</th>
+                    <th>User</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>New patient registered</td>
+                    <td>Receptionist</td>
+                    <td class="success">Completed</td>
+                </tr>
+
+                <tr>
+                    <td>Doctor added</td>
+                    <td>Super Admin</td>
+                    <td class="success">Completed</td>
+                </tr>
+
+                <tr>
+                    <td>Appointment booked</td>
+                    <td>Patient</td>
+                    <td class="pending">Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
